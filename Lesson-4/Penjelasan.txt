@@ -1,0 +1,1 @@
+Pada source code tersebut meliputi implementasi dari DOM dan CSSOM, berikut dengan painting yang diwakilkan oleh animation
