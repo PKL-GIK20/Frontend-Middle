@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DOM Manipulation</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+    }
+
+    #mainHeading {
+        font-size: 24px;
+        color: red;
+        margin-bottom: 20px;
+    }
+
+    #paragraph {
+        font-size: 18px;
+        color: green;
+        margin-bottom: 20px;
+    }
+
+    .button-container {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    input[type="text"] {
+        width: 200px;
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    @keyframes changeTextColorAnimation {
+            0% { color: green; }
+            50% { color: blue; }
+            100% { color: green; }
+        }
+</style>
+<body>
+    <h1 id="mainHeading">Hello, DOM!</h1>
+    <p id="paragraph">Ini adalah contoh implementasi DOM.</p>
+    <div class="button-container">
+        <button id="changeTextBtn">Ubah Teks</button>
+        <button id="changeColorBtn">Ubah Warna Teks</button>
+        <button id="hideElementBtn">Sembunyikan Elemen</button>
+        <button id="showElementBtn">Tampilkan Elemen</button>
+    </div>
+    <div class="button-container">
+        <input type="text" id="textInput" placeholder="Masukkan teks baru">
+        <button id="changeTextDynamicBtn">Ubah Teks Dinamis</button>
+    </div>
+
+    <script>
+        // Mengubah teks pada elemen dengan ID "mainHeading"
+        function changeText() {
+            var headingElement = document.getElementById("mainHeading");
+            headingElement.textContent = "DOM Manipulasi Berhasil!";
+        }
+
+        // Mengubah warna teks pada elemen dengan ID "paragraph"
+        function changeTextColor() {
+            var paragraphElement = document.getElementById("paragraph");
+            paragraphElement.style.color = "blue";
+        }
+
+        // Menyembunyikan elemen dengan ID "mainHeading"
+        function hideElement() {
+            var headingElement = document.getElementById("mainHeading");
+            headingElement.style.display = "none";
+        }
+
+        // Menampilkan kembali elemen dengan ID "mainHeading"
+        function showElement() {
+            var headingElement = document.getElementById("mainHeading");
+            headingElement.style.display = "block";
+        }
+
+        // Mengubah teks pada elemen dengan ID "mainHeading" berdasarkan input teks
+        function changeDynamicText() {
+            var textInput = document.getElementById("textInput");
+            var headingElement = document.getElementById("mainHeading");
+            headingElement.textContent = textInput.value;
+            textInput.value = ""; // Reset input setelah teks diubah
+        }
+
+        // Mengubah warna teks paragraf dengan animasi
+        function changeTextColorWithAnimation() {
+            var paragraphElement = document.getElementById("paragraph");
+            paragraphElement.style.animation = "changeTextColorAnimation 6s";
+            // Menghapus animasi setelah selesai
+            paragraphElement.addEventListener("animationend", function() {
+                paragraphElement.style.animation = "none";
+            });
+        }
+
+        // Menambahkan event listener untuk tombol "Ubah Teks"
+        var changeTextButton = document.getElementById("changeTextBtn");
+        changeTextButton.addEventListener("click", changeText);
+
+        // Menambahkan event listener untuk tombol "Ubah Warna Teks"
+        var changeColorButton = document.getElementById("changeColorBtn");
+        changeColorButton.addEventListener("click", changeTextColor);
+
+        // Menambahkan event listener untuk tombol "Sembunyikan Elemen"
+        var hideElementButton = document.getElementById("hideElementBtn");
+        hideElementButton.addEventListener("click", hideElement);
+
+        // Menambahkan event listener untuk tombol "Tampilkan Elemen"
+        var showElementButton = document.getElementById("showElementBtn");
+        showElementButton.addEventListener("click", showElement);
+
+        // Menambahkan event listener untuk tombol "Ubah Teks Dinamis"
+        var changeDynamicTextButton = document.getElementById("changeTextDynamicBtn");
+        changeDynamicTextButton.addEventListener("click", changeDynamicText);
+
+        // Menambahkan event listener untuk tombol "Ubah Warna Teks" dengan animasi
+        var changeColorButton = document.getElementById("changeColorBtn");
+        changeColorButton.addEventListener("click", changeTextColorWithAnimation);
+    </script>
+</body>
+</html>
