@@ -1,5 +1,3 @@
-// service-worker.js
-
 // Menyimpan file statis dalam cache saat Service Worker diinstal
 self.addEventListener('install', event => {
   event.waitUntil(
@@ -8,7 +6,6 @@ self.addEventListener('install', event => {
         '/',
         '/WebPerformance.html',
         '/src/gambar.jpg'
-        // Tambahkan file lain yang ingin Anda cache di sini
       ]);
     })
   );
