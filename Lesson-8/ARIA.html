@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contoh Implementasi ARIA</title>
+</head>
+<body>
+    <h1>Contoh Tombol Aksesibilitas dengan ARIA</h1>
+    <button id="tombolAksesibilitas" role="button" tabindex="0" aria-label="Tombol Sapa Dunia">Sapa Dunia!</button>
+
+    <!-- Skrip untuk menambahkan aksi pada tombol -->
+    <script>
+        const tombol = document.getElementById('tombolAksesibilitas');
+
+        tombol.addEventListener('click', function() {
+            alert('Halo Dunia!');
+        });
+    </script>
+</body>
+</html>
