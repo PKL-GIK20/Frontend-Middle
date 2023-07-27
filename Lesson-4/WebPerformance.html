@@ -137,8 +137,18 @@
 
     <!-- Lazy Load Video -->
     <iframe width="560" height="315" src="https://www.youtube.com/embed/JjIQq9lh-Bw" frameborder="0" allowfullscreen loading="lazy"></iframe>
-    <script src="script.js" loading="lazy">
-        
+    <script src="script.js, service-worker.js">
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js')
+              .then(registration => {
+                console.log('Service Worker berhasil terdaftar', registration);
+              })
+              .catch(error => {
+                console.log('Registrasi Service Worker gagal', error);
+              });
+          });
+        }
     </script>
 </body>
 </html>
