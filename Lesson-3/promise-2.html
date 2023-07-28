@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<script>
+  "use strict";
+
+  new Promise((resolve, reject) => {
+    throw new Error("Whoops!");
+  })
+    .catch(function (error) {
+      if (error instanceof URIError) {
+      } else {
+        alert("Can't handle such error");
+
+        throw error;
+      }
+    })
+    .then(function () {})
+    .catch((error) => {
+      alert(`The unknown error has occurred: ${error}`);
+    });
+</script>
