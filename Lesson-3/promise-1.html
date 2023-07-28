@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<script>
+"use strict";
+
+async function example() {
+  try {
+    const result1 = await new Promise(function(resolve, reject) {
+      setTimeout(() => resolve(1), 1000);
+    });
+
+    alert(result1); // 1
+
+    const result2 = await new Promise((resolve, reject) => { // (*)
+      setTimeout(() => resolve(result1 * 2), 1000);
+    });
+
+    alert(result2); // 2
+
+    const result3 = await new Promise((resolve, reject) => {
+      setTimeout(() => resolve(result2 * 2), 1000);
+    });
+
+    alert(result3); // 4
+  } catch (error) {
+    console.error("Error:", error);
+  }
+}
+
+example();
+</script>
