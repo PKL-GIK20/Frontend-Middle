@@ -214,6 +214,70 @@
             75% { background-color: #008000; }
             100% { background-color: #00ffff; }
         }
+
+        .color-wheel-container {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: conic-gradient(
+                from 0deg,
+                red 0%,
+                yellow 120deg,
+                blue 240deg,
+                red 360deg
+            );
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        .color-example {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .red {
+            background-color: #ff0000;
+        }
+
+        .yellow {
+            background-color: #ff0;
+        }
+
+        .blue {
+            background-color: #00f;
+        }
+
+        .green {
+            background-color: #008000;
+        }
+
+        .cyan {
+            background-color: #00ffff;
+        }
+        
+        .color-picker-container {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .color-preview {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #colorInput {
+            width: 100%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 40px;
+        }
+
     
 </style>
 <body>
@@ -286,40 +350,49 @@
         <div class="color-blending-animation-container">
             <div class="color-box1"></div>
         </div>
-        <h2>Skema Warna Analogus dan Komplementer</h2>
-        <p>
-            Skema warna adalah kombinasi warna yang dipilih untuk menciptakan tampilan yang seimbang dan harmonis. Dua skema warna umum adalah skema warna analogus dan skema warna komplementer.
-        </p>
-        <div class="color-box-container">
-            <div class="color-box" style="background-color: #ff6666;"></div>
-            <div class="color-box" style="background-color: #ff9999;"></div>
-            <div class="color-box" style="background-color: #ffcccc;"></div>
+        <h1>Color Wheel - RYB</h1>
+        <div class="color-wheel-container"></div>
+        <p class="color-info">The RYB color wheel</p>
+        <h2>Color Examples</h2>
+        <div class="color-example">
+            <div class="color-box red"></div>
+            <div class="color-box yellow"></div>
+            <div class="color-box blue"></div>
+            <div class="color-box green"></div>
+            <div class="color-box cyan"></div>
         </div>
-        <p class="color-info">
-            Skema Warna Analogus: Kombinasi warna yang berdekatan di roda warna<br>
-            Contoh: Merah Muda (#ff6666), Merah Terang (#ff9999), Merah Muda Muda (#ffcccc)
-        </p>
-        <div class="color-box-container">
-            <div class="color-box" style="background-color: #00ccff;"></div>
-            <div class="color-box" style="background-color: #ff6600;"></div>
-            <div class="color-box" style="background-color: #9900cc;"></div>
+        <p class="color-info">Red, Yellow, Blue, Green, Cyan</p>
+        <h2>Pilih Warna</h2>
+        <div class="color-picker-container">
+            <input type="color" id="colorInput" value="#ff0000">
         </div>
-        <p class="color-info">
-            Skema Warna Komplementer: Kombinasi warna yang berlawanan di roda warna<br>
-            Contoh: Biru (#00ccff), Oranye (#ff6600), Ungu (#9900cc)
-        </p>
     </div>
     <script src="script.js" loading="lazy">
         const colorBox = document.querySelector('.color-box');
 
-function blendColor() {
-    colorBox.style.animation = 'none'; // Reset the animation
-    void colorBox.offsetWidth; // Trigger reflow
-    colorBox.style.animation = 'changeColorAnimation 2s infinite'; // Start the animation
-}
+        function blendColor() {
+            colorBox.style.animation = 'none'; // Reset the animation
+            void colorBox.offsetWidth; // Trigger reflow
+            colorBox.style.animation = 'changeColorAnimation 2s infinite'; // Start the animation
+        }
 
-// Run the animation when the page loads
-blendColor();
+        // Run the animation when the page loads
+        blendColor();
+
+        const colorPreview = document.getElementById('colorPreview');
+        const colorInput = document.getElementById('colorInput');
+
+        // Function to update color based on input
+        function updateColorFromInput() {
+            const colorInputValue = colorInput.value;
+            updateColorPreview(colorInputValue);
+        }
+
+        // Function to update color preview
+        function updateColorPreview(color) {
+            colorPreview.style.backgroundColor = color;
+        }
+
     </script>
 </body>
 </html>
