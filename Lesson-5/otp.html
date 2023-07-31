@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>OTP Verification</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>OTP Verification</h2>
+    <form id="otpForm">
+      <label for="phoneNumber">Nomor Telepon:</label>
+      <input type="text" id="phoneNumber" name="phoneNumber" required><br>
+
+      <button type="submit">Kirim OTP</button>
+    </form>
+
+    <div id="otpVerification" style="display: none;">
+      <label for="otpInput">Masukkan kode OTP:</label>
+      <input type="text" id="otpInput" name="otpInput" required><br>
+
+      <button type="button" id="verifyOTP">Verifikasi OTP</button>
+    </div>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function kirimOTP(nomorTelepon) {
+      // Implement the function to send OTP (Simulated here)
+      console.log(`Kode OTP telah dikirim ke ${nomorTelepon}`);
+    }
+
+    function verifikasiOTP(nomorTelepon, otp) {
+      // Implement the function to verify OTP (Simulated here)
+      if (otp === '123456') {
+        console.log(`OTP valid. Anda berhasil diautentikasi.`);
+        document.getElementById('result').textContent = 'OTP valid. Anda berhasil diautentikasi.';
+      } else {
+        console.log('OTP tidak valid. Autentikasi gagal.');
+        document.getElementById('result').textContent = 'OTP tidak valid. Autentikasi gagal.';
+      }
+    }
+
+    document.getElementById('otpForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const phoneNumber = document.getElementById('phoneNumber').value;
+
+      // Call the function to send OTP
+      kirimOTP(phoneNumber);
+
+      // Show the OTP verification section
+      document.getElementById('otpVerification').style.display = 'block';
+    });
+
+    document.getElementById('verifyOTP').addEventListener('click', function () {
+      const phoneNumber = document.getElementById('phoneNumber').value;
+      const otpInput = document.getElementById('otpInput').value;
+
+      // Call the function to verify OTP
+      verifikasiOTP(phoneNumber, otpInput);
+    });
+  </script>
+</body>
+</html>
