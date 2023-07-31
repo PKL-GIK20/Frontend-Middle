@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cookie Example</title>
+</head>
+<body>
+  <h1>Cookie Example</h1>
+
+  <button onclick="setCookie()">Set Cookie</button>
+  <button onclick="readCookie()">Read Cookie</button>
+  <button onclick="removeCookie()">Remove Cookie</button>
+
+  <script>
+    function setCookie() {
+      var cookieName = "exampleCookie";
+      var cookieValue = "Hello, this is a cookie!";
+      var expirationDays = 30; // Cookie expiration in days
+
+      var date = new Date();
+      date.setTime(date.getTime() + (expirationDays * 24 * 60 * 60 * 1000));
+      var expires = "expires=" + date.toUTCString();
+
+      document.cookie = cookieName + "=" + cookieValue + ";" + expires + ";path=/";
+      alert("Cookie set!");
+    }
+
+    function readCookie() {
+      var cookieName = "exampleCookie";
+      var name = cookieName + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var cookieArray = decodedCookie.split(';');
+
+      for (var i = 0; i < cookieArray.length; i++) {
+        var cookie = cookieArray[i];
+        while (cookie.charAt(0) === ' ') {
+          cookie = cookie.substring(1);
+        }
+        if (cookie.indexOf(name) === 0) {
+          alert("Cookie value: " + cookie.substring(name.length, cookie.length));
+          return;
+        }
+      }
+
+      alert("Cookie not found!");
+    }
+
+    function removeCookie() {
+      var cookieName = "exampleCookie";
+      document.cookie = cookieName + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      alert("Cookie removed!");
+    }
+  </script>
+</body>
+</html>
