@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enkripsi Sensitivitas Data</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      margin-bottom: 10px;
+      padding: 8px;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    #result {
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 4px;
+    }
+
+    /* Responsive Styling */
+    @media only screen and (max-width: 600px) {
+      input {
+        width: 100%;
+      }
+
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Enkripsi Sensitivitas Data</h1>
+  <label for="data">Masukkan Data Sensitif:</label>
+  <input type="text" id="data" />
+  <br />
+  <label for="key">Masukkan Secret Key</label>
+  <input type="password" id="key" />
+  <br />
+  <button onclick="encryptData()">Enkripsi</button>
+
+  <h2>Hasil Enkripsi:</h2>
+  <div id="result"></div>
+
+  <script>
+    function encryptData() {
+      var data = document.getElementById("data").value;
+      var key = document.getElementById("key").value;
+
+      if (data.trim() === "" || key.trim() === "") {
+        alert("Data dan kunci enkripsi harus diisi.");
+        return;
+      }
+
+      var ciphertext = encrypt(data, key);
+      document.getElementById("result").textContent = ciphertext;
+    }
+
+    function encrypt(data, key) {
+      var plaintext = CryptoJS.enc.Utf8.parse(data);
+      var encryptionKey = CryptoJS.enc.Utf8.parse(key);
+      var ciphertext = CryptoJS.AES.encrypt(plaintext, encryptionKey, {
+        mode: CryptoJS.mode.ECB,
+      });
+      return ciphertext.toString();
+    }
+  </script>
+</body>
+</html>
