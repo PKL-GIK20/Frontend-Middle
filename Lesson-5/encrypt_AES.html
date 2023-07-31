@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client-Side AES Encryption</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <h1>Enkripsi Data Menggunakan AES</h1>
+  <label for="data">Masukkan data teks:</label>
+  <input type="text" id="data" />
+  <br />
+  <label for="key">Masukkan kunci enkripsi:</label>
+  <input type="password" id="key" />
+  <br />
+  <button onclick="encryptData()">Enkripsi</button>
+
+  <h2>Hasil Enkripsi:</h2>
+  <div id="result"></div>
+
+  <script>
+    function encryptData() {
+      var data = document.getElementById("data").value;
+      var key = document.getElementById("key").value;
+
+      if (data.trim() === "" || key.trim() === "") {
+        alert("Data dan kunci enkripsi harus diisi.");
+        return;
+      }
+
+      var ciphertext = encrypt(data, key);
+      document.getElementById("result").textContent = ciphertext;
+    }
+
+    function encrypt(data, key) {
+      var plaintext = CryptoJS.enc.Utf8.parse(data);
+      var encryptionKey = CryptoJS.enc.Utf8.parse(key);
+      var ciphertext = CryptoJS.AES.encrypt(plaintext, encryptionKey, {
+        mode: CryptoJS.mode.ECB,
+      });
+      return ciphertext.toString();
+    }
+  </script>
+</body>
+</html>
