@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sistem Pemesanan Tiket Konser</title>
+  <link rel="stylesheet" type="text/css" href="./style.css">
+</head>
+<body>
+  <h1>Konser Musik Favorit</h1>
+  <div class="tickets">
+    <p>Tiket A (ID: 1)</p>
+    <p>Tiket B (ID: 2)</p>
+    <p>Tiket C (ID: 3)</p>
+  </div>
+  <label for="ticketId">Masukkan ID Tiket:</label>
+  <input type="text" id="ticketId" placeholder="Masukkan ID Tiket">
+  <label for="quantity">Jumlah Tiket:</label>
+  <input type="number" id="quantity" placeholder="Jumlah Tiket">
+  <button onclick="pesanTiket()">Pesan Sekarang</button>
+  <p id="result"></p>
+
+  <script src="./script.js"></script>
+</body>
+</html>
