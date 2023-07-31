@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Social Authentication</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+    }
+
+    .error {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Social Authentication</h2>
+    <form id="authForm">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" required><br>
+
+      <label for="socialNetwork">Social Network:</label>
+      <select id="socialNetwork" name="socialNetwork" required>
+        <option value="">-- Pilih Social Network --</option>
+        <option value="Facebook">Facebook</option>
+        <option value="Google">Google</option>
+        <option value="Twitter">Twitter</option>
+      </select><br>
+
+      <button type="submit">Verifikasi</button>
+    </form>
+
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const userDatabase = {
+      john123: {
+        username: 'john123',
+        email: 'john@example.com',
+        socialNetwork: 'Facebook'
+      },
+      jane456: {
+        username: 'jane456',
+        email: 'jane@example.com',
+        socialNetwork: 'Google'
+      },
+      mike789: {
+        username: 'mike789',
+        email: 'mike@example.com',
+        socialNetwork: 'Twitter'
+      }
+    };
+
+    function verifikasiSocialAuthentication(username, socialNetwork) {
+      if (username in userDatabase) {
+        const user = userDatabase[username];
+        if (user.socialNetwork === socialNetwork) {
+          return true; // Verifikasi sukses
+        }
+      }
+      return false; // Verifikasi gagal atau username tidak ditemukan
+    }
+
+    document.getElementById('authForm').addEventListener('submit', function (event) {
+      event.preventDefault();
+      const username = document.getElementById('username').value;
+      const socialNetwork = document.getElementById('socialNetwork').value;
+
+      // Verifikasi Social Authentication
+      const isSocialAuthenticationValid = verifikasiSocialAuthentication(username, socialNetwork);
+
+      if (isSocialAuthenticationValid) {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+          <p>Social Authentication valid. Anda berhasil diautentikasi.</p>
+          <p>Selamat datang, ${username}!</p>
+        `;
+      } else {
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+          <p>Social Authentication tidak valid. Autentikasi gagal.</p>
+        `;
+      }
+    });
+  </script>
+</body>
+</html>
