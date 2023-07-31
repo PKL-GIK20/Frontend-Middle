@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SHA-256 Hashing</title>
+</head>
+<body>
+  <h1>SHA-256 Hashing</h1>
+  <label for="data">Masukkan data teks:</label>
+  <input type="text" id="data" />
+  <br />
+  <button onclick="hashData()">Hash</button>
+
+  <h2>Hasil Hash:</h2>
+  <div id="result"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+  <script>
+    function sha256Hash(str) {
+      var sha256 = CryptoJS.SHA256(str);
+      return sha256.toString();
+    }
+
+    function hashData() {
+      var data = document.getElementById("data").value;
+      if (data.trim() === "") {
+        alert("Data teks harus diisi.");
+        return;
+      }
+
+      var hashedData = sha256Hash(data);
+      document.getElementById("result").textContent = hashedData;
+    }
+  </script>
+</body>
+</html>

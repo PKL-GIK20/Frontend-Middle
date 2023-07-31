@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client-Side ECC and AES Encryption</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/elliptic/6.5.4/elliptic.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+</head>
+<body>
+  <h1>Enkripsi Data Menggunakan ECC dan AES</h1>
+  <label for="data">Masukkan data teks:</label>
+  <input type="text" id="data" />
+  <br />
+  <button onclick="encryptData()">Enkripsi</button>
+
+  <h2>Hasil Enkripsi:</h2>
+  <div id="result"></div>
+
+  <script>
+    function stringToUint8Array(str) {
+      var arr = new Uint8Array(str.length);
+      for (var i = 0; i < str.length; i++) {
+        arr[i] = str.charCodeAt(i);
+      }
+      return arr;
+    }
+
+    function encryptData() {
+      var data = document.getElementById("data").value;
+      if (data.trim() === "") {
+        alert("Data teks harus diisi.");
+        return;
+      }
+
+      // Generate ECC key pair
+      var ec = new elliptic.ec("secp256k1");
+      var keyPair = ec.genKeyPair();
+
+      // Convert data teks to Uint8Array
+      var dataUint8Array = stringToUint8Array(data);
+
+      // Generate a shared secret key using ECC key exchange
+      var sharedKey = keyPair.derive(keyPair.getPublic());
+
+      // Encrypt data using AES with the shared secret key
+      var ciphertext = CryptoJS.AES.encrypt(
+        CryptoJS.lib.WordArray.create(dataUint8Array),
+        sharedKey.toArray(),
+        { iv: CryptoJS.lib.WordArray.random(16) }
+      );
+
+      document.getElementById("result").textContent = ciphertext;
+    }
+  </script>
+</body>
+</html>

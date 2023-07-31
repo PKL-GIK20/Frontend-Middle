@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client-Side RSA Encryption</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jsencrypt/3.0.0/jsencrypt.min.js"></script>
+</head>
+<body>
+  <h1>Enkripsi Data Menggunakan RSA</h1>
+  <label for="data">Masukkan data teks:</label>
+  <input type="text" id="data" />
+  <br />
+  <button onclick="encryptData()">Enkripsi</button>
+
+  <h2>Hasil Enkripsi:</h2>
+  <div id="result"></div>
+
+  <script>
+    function encryptData() {
+      var data = document.getElementById("data").value;
+      if (data.trim() === "") {
+        alert("Data teks harus diisi.");
+        return;
+      }
+
+      // Inisialisasi objek RSA
+      var encryptor = new JSEncrypt();
+
+      // Public key yang digunakan untuk enkripsi
+      var publicKey = `
+        -----BEGIN PUBLIC KEY-----
+        MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAp29AWrdIS1UJzXnJugRN
+        9cdjp++CEHPTST7jRVsJkmGvyfb86QTnJ6rgg+1mgP0mZuyTuBU0ZuPnpV7TqWV6
+        1Pi7RVdrWQll9rgax99c5BB8B8cT6yyvk4Xp8KlJqUIcFBxqRGxR6H1w2xu+LPy/
+        WH8m+aFucwRAKugIzF4JQnA9ER+xwwNy+PyZdo5sHXelJ5Kx5ffABKd9g38a14f1
+        /5koYxPzH5kF9rtoz+tQ0p+n/DeHtfVWEU3+wE3sAO2/6R1IAK8PHwea0HJQQ8jc
+        Gk00hRClskpsCz4Gd3p1o8ClKTf5Tfvd85PK3zHQQ0NnKUAF4ArDZ+drCnhtYdDj
+        VwIDAQAB
+        -----END PUBLIC KEY-----
+      `;
+
+      // Set public key pada objek RSA
+      encryptor.setPublicKey(publicKey);
+
+      // Enkripsi data teks
+      var ciphertext = encryptor.encrypt(data);
+      document.getElementById("result").textContent = ciphertext;
+    }
+  </script>
+</body>
+</html>
