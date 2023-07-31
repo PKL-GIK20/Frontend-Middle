@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Contoh Vue Lifecycle</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <h2>{{ message }}</h2>
+    <p>Waktu berlalu sejak komponen dimuat: {{ elapsedTime }} detik</p>
+  </div>
+
+  <script>
+    new Vue({
+      el: '#app',
+      data() {
+        return {
+          message: 'Selamat datang!',
+          startTime: null,
+          elapsedTime: 0
+        };
+      },
+      // Metode created akan dieksekusi setelah komponen Vue dibuat
+      created() {
+        this.startTime = Date.now();
+        this.updateElapsedTime();
+      },
+      // Metode destroyed akan dieksekusi sebelum komponen dihancurkan
+      beforeDestroy() {
+        clearInterval(this.timerInterval);
+      },
+      methods: {
+        updateElapsedTime() {
+          this.timerInterval = setInterval(() => {
+            this.elapsedTime = Math.floor((Date.now() - this.startTime) / 1000);
+          }, 1000);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
