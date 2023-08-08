@@ -15,11 +15,17 @@ function HomeScreen({ navigation }) {
       <Image source={require('../assets/logo.png')} style={styles.logo} />
       <Text style={styles.title}>Selamat Datang di Way's Chick</Text>
       <Text style={styles.subtitle}>Restaurant Ayam </Text>
-      <TouchableOpacity style={styles.button} onPress={navigateToShoppingList}>
-        <Text style={styles.buttonText}>Lihat Menu</Text>
+      <TouchableOpacity
+        style={[styles.button, styles.menuButton]}
+        onPress={navigateToShoppingList}
+      >
+        <Text style={[styles.buttonText, styles.menuButtonText]}>Lihat Menu</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.button} onPress={navigateToAbout}>
-        <Text style={styles.buttonText}>Tentang Kami</Text>
+      <TouchableOpacity
+        style={[styles.button, styles.aboutButton]}
+        onPress={navigateToAbout}
+      >
+        <Text style={[styles.buttonText, styles.aboutButtonText]}>Tentang Kami</Text>
       </TouchableOpacity>
     </View>
   );
@@ -48,16 +54,29 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   button: {
-    backgroundColor: '#3498db',
-    paddingVertical: 10,
+    paddingVertical: 12,
     paddingHorizontal: 20,
-    borderRadius: 5,
-    marginTop: 10,
+    borderRadius: 25,
+    marginVertical: 10,
+    width: 200,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
-    color: 'white',
     fontSize: 18,
     fontWeight: 'bold',
+  },
+  menuButton: {
+    backgroundColor: '#3498db',
+  },
+  menuButtonText: {
+    color: 'white',
+  },
+  aboutButton: {
+    backgroundColor: '#27ae60',
+  },
+  aboutButtonText: {
+    color: 'white',
   },
 });
 
