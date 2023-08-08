@@ -4,6 +4,11 @@ import { View, Text, FlatList, StyleSheet, Image } from 'react-native';
 function OrderSummary({ route }) {
   const { selectedItems } = route.params;
 
+  const calculateTotal = () => {
+    const total = selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
+    return total.toFixed(2);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Ringkasan Pesanan</Text>
@@ -12,23 +17,19 @@ function OrderSummary({ route }) {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.orderItem}>
-            <Image source={item.image} style={styles.image} />
-            <View>
+            <Image source={item.image} style={styles.itemImage} />
+            <View style={styles.itemInfo}>
               <Text style={styles.itemName}>{item.name}</Text>
-              <Text>Rp.{item.price.toFixed(2)}</Text>
+              <Text>Quantity: {item.quantity}</Text>
+              <Text>Rp.{(item.price * item.quantity).toFixed(2)}</Text>
             </View>
           </View>
         )}
       />
-      <Text style={styles.total}>Total: Rp.{calculateTotal(selectedItems)}</Text>
+      <Text style={styles.total}>Total: Rp.{calculateTotal()}</Text>
     </View>
   );
 }
-
-const calculateTotal = (items) => {
-  const total = items.reduce((acc, item) => acc + item.price, 0);
-  return total.toFixed(2);
-};
 
 const styles = StyleSheet.create({
   container: {
@@ -46,18 +47,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 12,
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
-    paddingBottom: 8,
   },
-  image: {
+  itemImage: {
     width: 60,
     height: 60,
     marginRight: 10,
-    borderRadius: 8,
+    borderRadius: 5,
+  },
+  itemInfo: {
+    flex: 1,
   },
   itemName: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
   },
   total: {
