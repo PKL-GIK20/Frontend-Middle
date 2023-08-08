@@ -12,7 +12,7 @@ function AboutScreen({ navigation }) {
     <View style={styles.container}>
       <Image source={require('../assets/TNI.jpg')} style={styles.image} />
       <Text style={styles.title}>Tentang Kami</Text>
-      <Text style={styles.description}>Restoran yang berdiri sejak 2023, menyajikan hidangan ayam yang lezat.</Text>
+      <Text style={styles.description}>Kami tak pernah meragukan pelanggan, meskipun permintaan yang aneh aneh.</Text>
       <View style={styles.ratingContainer}>
         <Text style={styles.ratingText}>Rating: </Text>
         <StarRating

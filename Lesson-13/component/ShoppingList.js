@@ -9,13 +9,15 @@ function ShoppingList() {
   const navigation = useNavigation();
 
   const [menuItems, setMenuItems] = useState([
-    { id: '1', name: 'Paha Bawah', description: 'Pedas/Crispy', price: 10000, image: require('../assets/menu/paha-bawah.png'), category: 'food' },
-    { id: '2', name: 'Dada', description: 'Pedas', price: 12000, image: require('../assets/menu/dada.jpeg'), category: 'food' },
-    { id: '3', name: 'Paha Atas', description: 'Pedas/Crispy', price: 10000, image: require('../assets/menu/paha-atas.jpeg'), category: 'food' },
-    { id: '4', name: 'Sayap', description: 'Pedas/Crispy', price: 8000, image: require('../assets/menu/sayap.jpeg'), category: 'food' },
-    { id: '5', name: 'Teh', description: 'Dingin/Panas', price: 5000, image: require('../assets/menu/teh.jpg'), category: 'drink' },
-    { id: '6', name: 'Lemon', description: 'Dingin/Panas', price: 5000, image: require('../assets/menu/lemon.jpg'), category: 'drink' },
-    { id: '7', name: 'Alpukat', description: 'Dingin', price: 10000, image: require('../assets/menu/alpukat.jpg'), category: 'drink' },
+    { id: '1', name: 'Vanilla', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/vanilla.jpeg'), category: 'non' },
+    { id: '2', name: 'Cokelat', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/cokelat.jpg'), category: 'non' },
+    { id: '3', name: 'Tiramissu', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/tiramisu.jpg'), category: 'non' },
+    { id: '4', name: 'Green Tea', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/greentea.jpeg'), category: 'non' },
+    { id: '5', name: 'Kopi Susu', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/kopisusu.jpeg'), category: 'coffee' },
+    { id: '6', name: 'Americano', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/americano.jpeg'), category: 'coffee' },
+    { id: '7', name: 'Cappuccino', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/cappucino.jpg'), category: 'coffee' },
+    { id: '8', name: 'Cafe Latte', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/caffelatte.jpg'), category: 'coffee' },
+    { id: '9', name: 'Espresso', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/espresso.jpg'), category: 'coffee' },
   ]);
 
   const [selectedItems, setSelectedItems] = useState([]);
@@ -31,6 +33,17 @@ function ShoppingList() {
       changeItemQuantity(existingItem.id, existingItem.quantity + 1);
     } else {
       setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
+<<<<<<< Updated upstream
+    }
+  };
+
+  const changeItemQuantity = (itemId, newQuantity) => {
+    if (newQuantity >= 0) {
+      setSelectedItems((prevItems) =>
+        prevItems.map((item) => (item.id === itemId ? { ...item, quantity: newQuantity } : item))
+      );
+=======
+>>>>>>> Stashed changes
     }
   };
 
@@ -42,20 +55,20 @@ function ShoppingList() {
     }
   };
 
-  const foodItems = menuItems.filter((item) => item.category === 'food');
-  const drinkItems = menuItems.filter((item) => item.category === 'drink');
+  const nonItems = menuItems.filter((item) => item.category === 'non');
+  const coffeeItems = menuItems.filter((item) => item.category === 'coffee');
 
   useEffect(() => {
     navigation.setOptions({
-      title: 'Daftar Belanja',
+      title: 'Daftar Pesanan',
     });
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.categoryTitle}>Makanan</Text>
+      <Text style={styles.categoryTitle}>Non-Coffee</Text>
       <FlatList
-        data={foodItems}
+        data={nonItems}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <MenuItem
@@ -68,9 +81,9 @@ function ShoppingList() {
         )}
         style={styles.menuList}
       />
-      <Text style={styles.categoryTitle}>Minuman</Text>
+      <Text style={styles.categoryTitle}>Coffee</Text>
       <FlatList
-        data={drinkItems}
+        data={coffeeItems}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <MenuItem

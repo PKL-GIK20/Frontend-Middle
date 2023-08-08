@@ -13,8 +13,13 @@ function HomeScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Image source={require('../assets/logo.png')} style={styles.logo} />
+<<<<<<< Updated upstream
       <Text style={styles.title}>Selamat Datang di Way's Chick</Text>
       <Text style={styles.subtitle}>Restaurant Ayam </Text>
+=======
+      <Text style={styles.title}>Infinity Cafe</Text>
+      <Text style={styles.subtitle}> Non Coffee & Coffee</Text>
+>>>>>>> Stashed changes
       <TouchableOpacity
         style={[styles.button, styles.menuButton]}
         onPress={navigateToShoppingList}
