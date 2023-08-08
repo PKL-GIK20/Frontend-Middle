@@ -21,23 +21,29 @@ function ShoppingList() {
   const [selectedItems, setSelectedItems] = useState([]);
 
   const calculateTotal = () => {
-    const total = selectedItems.reduce((acc, item) => acc + item.price, 0);
+    const total = selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
     return total.toFixed(2);
   };
 
-  const toggleItemSelection = (item) => {
-    const isSelected = selectedItems.some((selectedItem) => selectedItem.id === item.id);
-    if (isSelected) {
-      setSelectedItems(selectedItems.filter((selectedItem) => selectedItem.id !== item.id));
+  const addItemToCart = (item) => {
+    const existingItem = selectedItems.find((selectedItem) => selectedItem.id === item.id);
+    if (existingItem) {
+      changeItemQuantity(existingItem.id, existingItem.quantity + 1);
     } else {
-      setSelectedItems([...selectedItems, item]);
+      setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
+    }
+  };
+
+  const changeItemQuantity = (itemId, newQuantity) => {
+    if (newQuantity >= 0) {
+      setSelectedItems((prevItems) =>
+        prevItems.map((item) => (item.id === itemId ? { ...item, quantity: newQuantity } : item))
+      );
     }
   };
 
   const foodItems = menuItems.filter((item) => item.category === 'food');
   const drinkItems = menuItems.filter((item) => item.category === 'drink');
-
-
 
   useEffect(() => {
     navigation.setOptions({
@@ -54,8 +60,10 @@ function ShoppingList() {
         renderItem={({ item }) => (
           <MenuItem
             {...item}
-            isSelected={selectedItems.some((selectedItem) => selectedItem.id === item.id)}
-            onPress={() => toggleItemSelection(item)}
+            quantity={selectedItems.find((selectedItem) => selectedItem.id === item.id)?.quantity || 0}
+            onQuantityChange={(newQuantity) => changeItemQuantity(item.id, newQuantity)}
+            onAddToCart={() => addItemToCart(item)}
+            onDeleteItem={() => DeleteItemToCart(item)}
           />
         )}
         style={styles.menuList}
@@ -67,8 +75,10 @@ function ShoppingList() {
         renderItem={({ item }) => (
           <MenuItem
             {...item}
-            isSelected={selectedItems.some((selectedItem) => selectedItem.id === item.id)}
-            onPress={() => toggleItemSelection(item)}
+            quantity={selectedItems.find((selectedItem) => selectedItem.id === item.id)?.quantity || 0}
+            onQuantityChange={(newQuantity) => changeItemQuantity(item.id, newQuantity)}
+            onAddToCart={() => addItemToCart(item)}
+            onDeleteItem={() => DeleteItemToCart(item)}
           />
         )}
         style={styles.menuList}
@@ -79,8 +89,8 @@ function ShoppingList() {
         onPress={() => {
           navigation.navigate('OrderSummary', { selectedItems });
         }}
-      />
-    </View>
+      />    
+      </View>
   );
 }
 
