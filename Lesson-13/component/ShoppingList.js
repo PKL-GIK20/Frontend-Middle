@@ -33,17 +33,6 @@ function ShoppingList() {
       changeItemQuantity(existingItem.id, existingItem.quantity + 1);
     } else {
       setSelectedItems([...selectedItems, { ...item, quantity: 1 }]);
-<<<<<<< Updated upstream
-    }
-  };
-
-  const changeItemQuantity = (itemId, newQuantity) => {
-    if (newQuantity >= 0) {
-      setSelectedItems((prevItems) =>
-        prevItems.map((item) => (item.id === itemId ? { ...item, quantity: newQuantity } : item))
-      );
-=======
->>>>>>> Stashed changes
     }
   };
 
