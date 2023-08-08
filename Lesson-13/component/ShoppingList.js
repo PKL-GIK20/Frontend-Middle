@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList,Image, StyleSheet } from 'react-native';
+import { View, Text, FlatList,Image,Button, StyleSheet } from 'react-native';
 import MenuItem from './MenuItem';
 import { useNavigation } from '@react-navigation/native';
+import OrderSummary from './OrderSummary';
+
 
 function ShoppingList() {
   const navigation = useNavigation();
@@ -34,6 +36,8 @@ function ShoppingList() {
 
   const foodItems = menuItems.filter((item) => item.category === 'food');
   const drinkItems = menuItems.filter((item) => item.category === 'drink');
+
+
 
   useEffect(() => {
     navigation.setOptions({
@@ -70,6 +74,12 @@ function ShoppingList() {
         style={styles.menuList}
       />
       <Text style={styles.total}>Total: Rp.{calculateTotal()}</Text>
+            <Button
+        title="Pesan Sekarang"
+        onPress={() => {
+          navigation.navigate('OrderSummary', { selectedItems });
+        }}
+      />
     </View>
   );
 }
