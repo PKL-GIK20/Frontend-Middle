@@ -1,12 +1,12 @@
 [
     { "id": "1", "name": "Vanilla", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/vanilla.jpeg", "category": "non" },
-    { "id": "2", "name": "Cokelat", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/cokelat.jpeg", "category": "non" },
-    { "id": "3", "name": "Tiramissu", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/tiramisu.jpeg", "category": "non" },
+    { "id": "2", "name": "Cokelat", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/cokelat.jpg", "category": "non" },
+    { "id": "3", "name": "Tiramissu", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/tiramisu.jpg", "category": "non" },
     { "id": "4", "name": "Green Tea", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/greentea.jpeg", "category": "non" },
-    { "id": "5", "name": "Taro", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/taro.jpeg", "category": "non" },
+    { "id": "5", "name": "Taro", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/taro.jpg", "category": "non" },
     { "id": "6", "name": "Kopi Susu", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/kopisusu.jpeg", "category": "coffee" },
     { "id": "7", "name": "Americano", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/americano.jpeg", "category": "coffee" },
-    { "id": "8", "name": "Cappuccino", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/cappucino.jpeg", "category": "coffee" },
-    { "id": "9", "name": "Cafe Latte", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/caffelate.jpeg", "category": "coffee" },
-    { "id": "10", "name": "Espresso", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/espresso.jpeg", "category": "coffee" }
+    { "id": "8", "name": "Cappuccino", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/cappucino.jpg", "category": "coffee" },
+    { "id": "9", "name": "Cafe Latte", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/caffelate.jpg", "category": "coffee" },
+    { "id": "10", "name": "Espresso", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/espresso.jpg", "category": "coffee" }
   ]
