@@ -19,7 +19,7 @@ function HomeScreen({ navigation }) {
   useEffect(() => {
     Animated.timing(value, {
       toValue: 1,
-      duration: 2000,
+      duration: 3000,
       easing: Easing.linear,
     }).start();
   }, []);

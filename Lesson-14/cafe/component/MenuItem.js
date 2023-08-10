@@ -1,35 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Image, Animated } from 'react-native';
+import React from 'react';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 
 function MenuItem({ id, name, description, price, image, quantity, onQuantityChange, onAddToCart, onDeleteItem }) {
-  const [quantityValue] = useState(new Animated.Value(quantity));
-
-  const increaseQuantity = () => {
-    const newValue = quantity + 1;
-    onQuantityChange(newValue);
-
-    // Animasikan perubahan quantity menggunakan Animated.timing
-    Animated.timing(quantityValue, {
-      toValue: newValue,
-      duration: 300,
-      useNativeDriver: false,
-    }).start();
-  };
-
-  const decreaseQuantity = () => {
-    if (quantity > 0) {
-      const newValue = quantity - 1;
-      onQuantityChange(newValue);
-
-      // Animasikan perubahan quantity menggunakan Animated.timing
-      Animated.timing(quantityValue, {
-        toValue: newValue,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
-    }
-  };
-
   return (
     <View style={styles.container}>
       <Image source={image} style={styles.image} />
@@ -39,16 +11,22 @@ function MenuItem({ id, name, description, price, image, quantity, onQuantityCha
         <Text style={styles.price}>Rp.{price.toFixed(2)}</Text>
       </View>
       <View style={styles.quantityContainer}>
-        <TouchableOpacity style={styles.quantityButton} onPress={decreaseQuantity}>
+        <TouchableOpacity
+          style={styles.quantityButton}
+          onPress={() => {
+            if (quantity > 0) {
+              onQuantityChange(quantity - 1);
+            }
+          }}
+        >
           <Text style={styles.quantityButtonText}>-</Text>
         </TouchableOpacity>
-        <Animated.Text style={[styles.quantityValue, { opacity: quantityValue }]}>
-          {quantity}
-        </Animated.Text>
-        <TouchableOpacity style={styles.quantityButton} onPress={increaseQuantity}>
+        <Text style={styles.quantityValue}>{quantity}</Text>
+        <TouchableOpacity style={styles.quantityButton} onPress={onAddToCart}>
           <Text style={styles.quantityButtonText}>+</Text>
         </TouchableOpacity>
       </View>
+
     </View>
   );
 }
