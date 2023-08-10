@@ -10,6 +10,10 @@ function HomeScreen({ navigation }) {
     navigation.navigate('About');
   };
 
+  const navigateToProductManagement = () => {
+    navigation.navigate('ProductManagement'); 
+  };
+
   return (
     <View style={styles.container}>
       <Image source={require('../assets/logo.png')} style={styles.logo} />
@@ -20,6 +24,12 @@ function HomeScreen({ navigation }) {
         onPress={navigateToShoppingList}
       >
         <Text style={[styles.buttonText, styles.menuButtonText]}>Lihat Menu</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={[styles.button, styles.productManagementButton]} 
+        onPress={navigateToProductManagement} 
+      >
+        <Text style={[styles.buttonText, styles.productManagementButtonText]}>Kelola Produk</Text>
       </TouchableOpacity>
       <TouchableOpacity
         style={[styles.button, styles.aboutButton]}
@@ -76,6 +86,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#27ae60',
   },
   aboutButtonText: {
+    color: 'white',
+  },
+  productManagementButton: {
+    backgroundColor: '#ffa200', 
+  },
+  productManagementButtonText: {
     color: 'white',
   },
 });
