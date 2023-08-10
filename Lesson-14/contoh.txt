@@ -1,0 +1,9 @@
+Buatkan materi berikut secara detail!
+
+Catatan : Gunakan bahasa Indonesia, tetapi jika terdapat istilah programming, maka gunakan bahasa Inggris pada istilah tersebut. Selain itu, jangan menggunakan kata "Anda", tetapi gunakan kata "kita".
+
+Materi : Styled Components and CSS-in-JS
+- Memperkenalkan pendekatan penggunaan styled components dan CSS-in-JS di React Native.
+- Menjelaskan cara membuat komponen yang memiliki styling terkait langsung dalam kode JavaScript.
+
+

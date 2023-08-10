@@ -1,31 +1,59 @@
-//Untuk menjalankan CSS in JS
+// Untuk menjalankan responsive design
 import React, { useState } from 'react';
-import { ThemeProvider } from 'styled-components/native';
-import { lightTheme, darkTheme } from './css-in-js/theme.js';
-import { Container, Title, Text, Button, ButtonText, Image } from './css-in-js/styled.js';
+import Box from './responsive-design/Box.js';
+import Row from './responsive-design/Row.js';
+import ResponsiveText1 from './responsive-design/ResponsiveText1.js';
 
 const App = () => {
-  const [theme, setTheme] = useState(lightTheme);
-
-  const toggleTheme = () => {
-    setTheme(theme === lightTheme ? darkTheme : lightTheme);
-  };
-
   return (
-    <ThemeProvider theme={theme}>
-      <Container>
-        <Title>Styled App</Title>
-        <Text>Ini adalah aplikasi sederhana yang menggunakan styled components dan CSS-in-JS di React Native.</Text>
-        <Button onPress={toggleTheme}>
-          <ButtonText>Ubah Tema</ButtonText>
-        </Button>
-        <Image source={require('./assets/splash.png')} width={100} height={100} />
-      </Container>
-    </ThemeProvider>
+    // <Box />
+    // <Row />
+    <ResponsiveText1 />
   );
 };
 
 export default App;
+
+// Untuk menjalankan penggunaan SVG dan grafis kustom
+// import React, { useState } from 'react';
+// import Star from './components/Star.js';
+
+// const App = () => {
+//   return (
+//     <Star />
+//   );
+// };
+
+// export default App;
+
+// Untuk menjalankan CSS in JS
+// import React, { useState } from 'react';
+// import { ThemeProvider } from 'styled-components/native';
+// import { lightTheme, darkTheme } from './css-in-js/theme.js';
+// import { Container, Title, Text, Button, ButtonText, Image } from './css-in-js/styled.js';
+
+// const App = () => {
+//   const [theme, setTheme] = useState(lightTheme);
+
+//   const toggleTheme = () => {
+//     setTheme(theme === lightTheme ? darkTheme : lightTheme);
+//   };
+
+//   return (
+//     <ThemeProvider theme={theme}>
+//       <Container>
+//         <Title>Styled App</Title>
+//         <Text>Ini adalah aplikasi sederhana yang menggunakan styled components dan CSS-in-JS di React Native.</Text>
+//         <Button onPress={toggleTheme}>
+//           <ButtonText>Ubah Tema</ButtonText>
+//         </Button>
+//         <Image source={require('./assets/splash.png')} width={100} height={100} />
+//       </Container>
+//     </ThemeProvider>
+//   );
+// };
+
+// export default App;
 
 
 //Untuk menjalankan Custom Styling Solutions
