@@ -16,7 +16,7 @@ function ShoppingList() {
 
   const fetchMenuItems = async () => {
     try {
-      const response = await fetch('https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/shoppingList.json'); // Replace with your API URL
+      const response = await fetch('https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/shoppingList.json'); 
       const data = await response.json();
       setMenuItems(data);
     } catch (error) {

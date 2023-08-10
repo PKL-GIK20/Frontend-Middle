@@ -17,7 +17,7 @@ function OrderSummary({ route }) {
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
           <View style={styles.orderItem}>
-            <Image source={item.image} style={styles.itemImage} />
+            <Image source={{ uri: item.image }} style={styles.itemImage} />
             <View style={styles.itemInfo}>
               <Text style={styles.itemName}>{item.name}</Text>
               <Text>Quantity: {item.quantity}</Text>
