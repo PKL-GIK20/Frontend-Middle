@@ -10,4 +10,3 @@
     { "id": "9", "name": "Cafe Latte", "description": "Panas/Dingin", "price": 10000, "category": "coffee" },
     { "id": "10", "name": "Espresso", "description": "Panas/Dingin", "price": 10000, "category": "coffee" }
   ]
-  
