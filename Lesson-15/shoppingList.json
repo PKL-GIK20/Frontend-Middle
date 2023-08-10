@@ -1,0 +1,12 @@
+[
+    { "id": "1", "name": "Vanilla", "description": "Panas/Dingin", "price": 10000, "category": "non" },
+    { "id": "2", "name": "Cokelat", "description": "Panas/Dingin", "price": 10000, "category": "non" },
+    { "id": "3", "name": "Tiramissu", "description": "Panas/Dingin", "price": 10000, "category": "non" },
+    { "id": "4", "name": "Green Tea", "description": "Panas/Dingin", "price": 10000, "category": "non" },
+    { "id": "5", "name": "Kopi Susu", "description": "Panas/Dingin", "price": 10000, "category": "coffee" },
+    { "id": "6", "name": "Americano", "description": "Panas/Dingin", "price": 10000, "category": "coffee" },
+    { "id": "7", "name": "Cappuccino", "description": "Panas/Dingin", "price": 10000, "category": "coffee" },
+    { "id": "8", "name": "Cafe Latte", "description": "Panas/Dingin", "price": 10000, "category": "coffee" },
+    { "id": "9", "name": "Espresso", "description": "Panas/Dingin", "price": 10000, "category": "coffee" }
+  ]
+  
