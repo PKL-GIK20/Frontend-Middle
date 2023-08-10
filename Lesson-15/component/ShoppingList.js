@@ -7,20 +7,22 @@ import OrderSummary from './OrderSummary';
 
 function ShoppingList() {
   const navigation = useNavigation();
-
-  const [menuItems, setMenuItems] = useState([
-    { id: '1', name: 'Vanilla', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/vanilla.jpeg'), category: 'non' },
-    { id: '2', name: 'Cokelat', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/cokelat.jpg'), category: 'non' },
-    { id: '3', name: 'Tiramissu', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/tiramisu.jpg'), category: 'non' },
-    { id: '4', name: 'Green Tea', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/greentea.jpeg'), category: 'non' },
-    { id: '5', name: 'Kopi Susu', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/kopisusu.jpeg'), category: 'coffee' },
-    { id: '6', name: 'Americano', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/americano.jpeg'), category: 'coffee' },
-    { id: '7', name: 'Cappuccino', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/cappucino.jpg'), category: 'coffee' },
-    { id: '8', name: 'Cafe Latte', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/caffelatte.jpg'), category: 'coffee' },
-    { id: '9', name: 'Espresso', description: 'Panas/Dingin', price: 10000, image: require('../assets/menu/espresso.jpg'), category: 'coffee' },
-  ]);
-
+  const [menuItems, setMenuItems] = useState([]);
   const [selectedItems, setSelectedItems] = useState([]);
+
+  useEffect(() => {
+    fetchMenuItems(); // Fetch menu items from API
+  }, []);
+
+  const fetchMenuItems = async () => {
+    try {
+      const response = await fetch('https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/shoppingList.json'); // Replace with your API URL
+      const data = await response.json();
+      setMenuItems(data);
+    } catch (error) {
+      console.error('Error fetching menu items:', error);
+    }
+  };
 
   const calculateTotal = () => {
     const total = selectedItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
