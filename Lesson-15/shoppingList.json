@@ -7,6 +7,6 @@
     { "id": "6", "name": "Kopi Susu", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/kopisusu.jpeg", "category": "coffee" },
     { "id": "7", "name": "Americano", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/americano.jpeg", "category": "coffee" },
     { "id": "8", "name": "Cappuccino", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/cappucino.jpg", "category": "coffee" },
-    { "id": "9", "name": "Cafe Latte", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/caffelate.jpg", "category": "coffee" },
+    { "id": "9", "name": "Cafe Latte", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/caffelatte.jpg", "category": "coffee" },
     { "id": "10", "name": "Espresso", "description": "Panas/Dingin", "price": 10000, "image": "https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-15/assets/menu/espresso.jpg", "category": "coffee" }
   ]
