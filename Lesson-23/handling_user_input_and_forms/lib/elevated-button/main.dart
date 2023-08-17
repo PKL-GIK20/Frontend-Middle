@@ -32,7 +32,7 @@ class MyHomePage extends StatelessWidget {
           ),
         ),
         body: Center(
-            child: ElevatedButton.icon(
+          child: ElevatedButton.icon(
           icon: const Icon(
             Icons.favorite,
             color: Colors.pink,
