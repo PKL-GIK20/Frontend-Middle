@@ -34,7 +34,7 @@ class _ProductListState extends State<ProductList> {
 
   Future<List<Product>> fetchProducts() async {
     final response =
-        await http.get(Uri.parse('https://api.example.com/products'));
+        await http.get(Uri.parse('https://raw.githubusercontent.com/PKL-GIK20/Frontend-Middle/main/Lesson-24/week_6/product.json'));
     if (response.statusCode == 200) {
       final List<dynamic> responseData = json.decode(response.body);
       return responseData.map((json) => Product.fromJson(json)).toList();
@@ -58,11 +58,14 @@ class _ProductListState extends State<ProductList> {
             return ListView.builder(
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(snapshot.data![index].name),
-                  subtitle: Text('Harga: \$${snapshot.data![index].price}'),
-                );
-              },
+                final product = snapshot.data![index];
+                final formattedPrice = 'Rp ${product.price.toStringAsFixed(2)}';
+
+              return ListTile(
+                title: Text(product.name),
+                subtitle: Text('Harga: $formattedPrice'),
+            );
+            },
             );
           }
         },
