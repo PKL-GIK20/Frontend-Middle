@@ -1,0 +1,33 @@
+[
+    {
+      "id": 1,
+      "name": "Ballpoint Pen",
+      "price": 1.99
+    },
+    {
+      "id": 2,
+      "name": "Notebook",
+      "price": 3.49
+    },
+    {
+      "id": 3,
+      "name": "Pencil Set",
+      "price": 2.25
+    },
+    {
+      "id": 4,
+      "name": "Highlighter",
+      "price": 0.99
+    },
+    {
+      "id": 5,
+      "name": "Eraser",
+      "price": 0.49
+    },
+    {
+      "id": 6,
+      "name": "Sticky Notes",
+      "price": 1.75
+    }
+  ]
+  
