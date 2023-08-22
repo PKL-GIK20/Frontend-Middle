@@ -5,94 +5,98 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'TextEditingController Example',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'TextEditingController Example'),
+      home: MyForm(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
+class MyForm extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyFormState createState() => _MyFormState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  // Membuat TextEditingController untuk nama dan email
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-
-  // Membuat variabel untuk menyimpan nilai input
-  String _name = '';
-  String _email = '';
-
-  // Membuat fungsi untuk menangani perubahan input
-  void _handleInput() {
-    setState(() {
-      // Mengubah nilai variabel sesuai dengan nilai controller
-      _name = _nameController.text;
-      _email = _emailController.text;
-    });
-  }
-
-  @override
-  void dispose() {
-    // Membersihkan controller saat widget tidak digunakan lagi
-    _nameController.dispose();
-    _emailController.dispose();
-    super.dispose();
-  }
+class _MyFormState extends State<MyForm> {
+  final _formKey = GlobalKey<FormState>();
+  String? password;
+  String? confirmPassword;
+  bool _isPasswordObscured = true;
+  bool _isConfirmPasswordObscured = true;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
+      appBar: AppBar(title: Text('Advanced Form Handling')),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Form(
+          key: _formKey,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              // Membuat TextFormField dengan controller untuk nama
+            children: [
               TextFormField(
-                controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Nama',
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isPasswordObscured = !_isPasswordObscured;
+                      });
+                    },
+                    icon: Icon(
+                      _isPasswordObscured ? Icons.visibility : Icons.visibility_off,
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  // Memanggil fungsi saat input berubah
-                  _handleInput();
+                obscureText: _isPasswordObscured,
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Password harus diisi';
+                  }
+                  // Other password validation rules...
+                  return null;
+                },
+                onSaved: (value) {
+                  password = value;
                 },
               ),
-              // Membuat TextFormField dengan controller untuk email
               TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(
-                  labelText: 'Email',
+                decoration: InputDecoration(
+                  labelText: 'Konfirmasi Password',
+                  suffixIcon: IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _isConfirmPasswordObscured = !_isConfirmPasswordObscured;
+                      });
+                    },
+                    icon: Icon(
+                      _isConfirmPasswordObscured ? Icons.visibility : Icons.visibility_off,
+                    ),
+                  ),
                 ),
-                onChanged: (value) {
-                  // Memanggil fungsi saat input berubah
-                  _handleInput();
+                obscureText: _isConfirmPasswordObscured,
+                validator: (value) {
+                  if (value != password) {
+                    return 'Konfirmasi password tidak cocok';
+                  }
+                  return null;
+                },
+                onSaved: (value) {
+                  confirmPassword = value;
                 },
               ),
-              // Membuat SizedBox untuk memberi jarak antara form dan teks
-              const SizedBox(height: 16.0),
-              // Membuat Text untuk menampilkan nilai input nama dan email
-              Text(
-                'Nama Anda adalah $_name dan email Anda adalah $_email.',
-                style: Theme.of(context).textTheme.headline6,
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text('Form Valid')),
+                    );
+                  }
+                },
+                child: Text('Submit'),
               ),
             ],
           ),
