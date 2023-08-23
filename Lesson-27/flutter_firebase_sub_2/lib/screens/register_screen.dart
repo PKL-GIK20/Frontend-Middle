@@ -112,7 +112,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             SizedBox(height: 20,),
             TextButton(onPressed: (){
               Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginScreen()));
-            }, child: Text("Already have an account? Login here"),)
+            }, child: Text("Already have an account? Login here")),
           ],
         ),
       ),

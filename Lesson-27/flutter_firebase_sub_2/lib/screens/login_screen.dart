@@ -2,9 +2,17 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase_sub_2/services/auth_service.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
+
   TextEditingController passwordController = TextEditingController();
+
+  bool loading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +43,14 @@ class LoginScreen extends StatelessWidget {
           ),
           SizedBox(height: 30,),
 
-          Container(
+          loading? CircularProgressIndicator(): Container(
               height: 50,
               width: MediaQuery.of(context).size.width,
               child: ElevatedButton(
                 onPressed: ()async{
+                  setState(() {
+                    loading = true;
+                  });
                   if(emailController.text == "" || passwordController.text == ""){
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -56,7 +67,11 @@ class LoginScreen extends StatelessWidget {
                       print(result.email);
                     }
                   }
+                  setState(() {
+                    loading = false;
+                  });
                 }, 
+                
                 child: Text("Submit", style: TextStyle(
                   fontSize: 25, fontWeight: FontWeight.bold
                 ),),
