@@ -1,0 +1,10 @@
+<div class="number-game">
+    <h2>Tebak Angka</h2>
+    <div *ngIf="isGameStarted">
+      <p>Tebak Angka dari 1 sampai dengan 100</p>
+      <input type="number" [(ngModel)]="userGuess" [disabled]="attempts >= maxAttempts">
+      <button (click)="checkGuess()" [disabled]="userGuess === null || attempts >= maxAttempts">Check</button>
+      <p>{{ message }}</p>
+    </div>
+  </div>
+  
