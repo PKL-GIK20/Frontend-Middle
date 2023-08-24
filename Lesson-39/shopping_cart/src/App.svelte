@@ -1,8 +1,8 @@
 <script>
 	let products = [
-	  { id: 1, name: "Apple", price: 1 },
-	  { id: 2, name: "Banana", price: 0.5 },
-	  { id: 3, name: "Orange", price: 0.75 }
+	  { id: 1, name: "Apple", price: 10000 },
+	  { id: 2, name: "Banana", price: 5000 },
+	  { id: 3, name: "Orange", price: 7500 }
 	];
   
 	let cart = [];
@@ -42,7 +42,7 @@
   <ul>
 	{#each products as product (product.id)}
 	  <li>
-		{product.name}: ${product.price}
+		{product.name}: Rp{product.price}
 		<button on:click={() => addToCart(product)}>Add to Cart</button>
 	  </li>
 	{/each}
@@ -52,14 +52,14 @@
   <ul>
 	{#each cart as item (item.id)}
 	  <li>
-		{item.name} - ${item.price} x
+		{item.name} - Rp{item.price} x
 		<input type="number" bind:value={item.quantity} min="1" on:change={() => updateQuantity(item, event.target.value)} />
 		<button on:click={() => removeFromCart(item)}>Remove</button>
 	  </li>
 	{/each}
   </ul>
   
-  <p>Subtotal: ${subtotal}</p>
+  <p>Subtotal: Rp{subtotal}</p>
 
   <style>
 	input {
